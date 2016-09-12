@@ -3,11 +3,11 @@ class LinksController < ApplicationController
   before_action :require_login
 
   def index
-    @links = @current_user.links
+    @links = current_user.links
   end
 
   def create
-    @link = @current_user.links.new(link_params)
+    @link = current_user.links.new(link_params)
     if @link.save
       flash[:success] = "Link added!"
       redirect_to links_path
