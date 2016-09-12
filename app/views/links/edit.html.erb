@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">Edit Link</h3>
+      </div>
+
+      <div class="panel-body">
+        <%= form_for @link do |f| %>
+          <div class="form-group">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :url %>
+            <p>Links must begin with "http://" or "https://"</p>
+            <%= f.text_field :url, class: "form-control" %>
+          </div>
+
+          <%= f.submit "Edit Link", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
