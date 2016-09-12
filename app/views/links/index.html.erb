@@ -1,1 +1,12 @@
-<h1>All Your Links!</h1>
+<h1 class="text-center">All Your Links!</h1>
+
+<%= render "links/new" %>
+
+<div class="all-links">
+  <% @links.each do |link| %>
+    <div class="link-container">
+      <h2><%= link.title %></h2>
+      <h3><%= link.url %></h3>
+    </div>
+  <% end %>
+</div>
