@@ -3,5 +3,10 @@
 <%= render "links/new" %>
 
 <div class="all-links">
-
+  <% @links.each do |link| %>
+    <div class="link-container">
+      <h2><%= link.title %></h2>
+      <h3><%= link.url %></h3>
+    </div>
+  <% end %>
 </div>

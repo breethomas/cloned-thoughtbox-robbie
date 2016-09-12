@@ -7,15 +7,15 @@
       </div>
 
       <div class="panel-body">
-        <%= form_for @link do |f| %>
+        <%= form_for Link.new do |f| %>
           <div class="form-group">
             <%= f.label :title %>
-            <%= f.text :title, class: "form-control" %>
+            <%= f.text_field :title, class: "form-control" %>
           </div>
 
           <div class="form-group">
             <%= f.label :url %>
-            <%= f.text :url, class: "form-control" %>
+            <%= f.text_field :url, class: "form-control" %>
           </div>
 
           <%= f.submit "Submit Link", class: "btn btn-primary" %>
