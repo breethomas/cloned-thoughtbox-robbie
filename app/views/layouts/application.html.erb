@@ -7,8 +7,20 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
 
-  <body class="container-fluid">
-    <%= yield %>
+  <body>
+    <%= render "shared/navbar" %>
+
+    <div class="container-fluid">
+      <% flash.each do |type, message| %>
+        <div class="alert alert-<%= type %> text-center alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <%= sanitize(message) %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
   </body>
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
