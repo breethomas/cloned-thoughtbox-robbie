@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $(".link-container").on("click", ".mark-read", function(){
+  $(".all-links").on("click", ".mark-read", function(){
     var $linkDiv = $(this).parent().parent().parent().parent();
     var linkID = $linkDiv.data("id");
     var linkTitle = $linkDiv.find(".title").html();
@@ -18,7 +18,7 @@ $(document).ready(function() {
     })
   });
 
-  $(".link-container").on("click", ".mark-unread", function(){
+  $(".all-links").on("click", ".mark-unread", function(){
     var $linkDiv = $(this).parent().parent().parent().parent();
     var linkID = $linkDiv.data("id");
     var linkTitle = $linkDiv.find(".title").html();
