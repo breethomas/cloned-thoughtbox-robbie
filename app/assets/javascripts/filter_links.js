@@ -1,11 +1,11 @@
 $(document).ready(function() {
-  $('#link-filter').on('keyup', function () {
+  $('#link-text-filter').on('keyup', function () {
     var $links = $('.link-container');
     var query = this.value;
 
     $.each($links, function (index, link) {
-      var linkText = $(idea).find(".title").html() +
-                ' ' + $(idea).find(".url").html();
+      var linkText = $(link).find(".title").html() +
+                ' ' + $(link).find(".url").html();
 
       if (linkText.toLowerCase().indexOf(query.toLowerCase()) == -1 ) {
         $(link).hide();
