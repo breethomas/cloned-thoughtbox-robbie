@@ -21,18 +21,18 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
   end
 
+  def change_read_status
+    Link.find(params[:id]).update(link_params)
+  end
+
   def update
     @link = Link.find(params[:id])
-    if request.xhr?
-      @link.update(link_params)
+    if @link.update(link_params)
+      flash[:success] = "Link edited!"
+      redirect_to links_path
     else
-      if @link.update(link_params)
-        flash[:success] = "Link edited!"
-        redirect_to links_path
-      else
-        flash.now[:warning] = @link.errors.full_messages.join(", ")
-        render :edit
-      end
+      flash.now[:warning] = @link.errors.full_messages.join(", ")
+      render :edit
     end
   end
 

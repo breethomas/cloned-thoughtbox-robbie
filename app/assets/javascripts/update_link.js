@@ -25,10 +25,10 @@ function getLinkAttributes(button) {
 
 function sendReadStatusUpdate(linkAttributes, buttonText, statusWas, statusChangeTo) {
   $.ajax({
-    url: '/links/' + linkAttributes.id,
-    method: "PATCH",
+    url: '/change_read_status/' + linkAttributes.id,
+    method: "PUT",
     dataType: "JSON",
-    data: {link: {title: linkAttributes.title, url: linkAttributes.url, read: "true"}}
+    data: {link: {title: linkAttributes.title, url: linkAttributes.url, read: statusChangeTo}}
   }).done( function() {
     linkAttributes.button.removeClass('btn-read-' + statusWas);
     linkAttributes.button.addClass('btn-read-' + statusChangeTo);
