@@ -7,7 +7,7 @@ $(document).ready(function() {
       var linkText = $(link).find(".title").html() +
                 ' ' + $(link).find(".url").html();
 
-      if (linkText.toLowerCase().indexOf(query.toLowerCase()) == -1 ) {
+      if ( containsText(linkText, query) == -1 ) {
         $(link).hide();
       } else {
         $(link).show();
@@ -15,3 +15,7 @@ $(document).ready(function() {
     })
   });
 });
+
+function containsText(textToSearch, query) {
+  return textToSearch.toLowerCase().indexOf(query.toLowerCase())
+};
