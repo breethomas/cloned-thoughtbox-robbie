@@ -1,17 +1,20 @@
 $(document).ready(function() {
-  var originalOrder = $(".all-links").html();
+  var originalOrderLinks = $(".all-links").html();
   var $links = $('.link-container');
 
   $('#sort-alphabetically').on('click', function () {
     if ($(this).is(':checked')) {
-      var alphabetical = $links.sort(function (a, b) {
-        console.log($(a).find(".title").text())
-        return $(a).find(".title").text() > $(b).find(".title").text();
-      });
+      var alphabetizedLinks = alphabetize($links);
 
-      $(".all-links").html(alphabetical);
+      $(".all-links").html(alphabetizedLinks);
     } else {
-      $(".all-links").html(originalOrder);
+      $(".all-links").html(originalOrderLinks);
     }
   });
 });
+
+function alphabetize(links) {
+  return links.sort(function (a, b) {
+    return $(a).find(".title").text() > $(b).find(".title").text();
+  });
+};
