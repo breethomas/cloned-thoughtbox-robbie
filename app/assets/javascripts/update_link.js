@@ -1,36 +1,14 @@
 $(document).ready(function() {
-  $(".all-links").on("click", ".mark-read", function(){
+  $(".all-links").on("click", ".btn-read-false", function(){
     linkAttributes = getLinkAttributes($(this));
 
-    $.ajax({
-      url: '/links/' + linkAttributes.id,
-      method: "PATCH",
-      dataType: "JSON",
-      data: {link: {title: linkAttributes.title, url: linkAttributes.url, read: "true"}}
-    }).done( function() {
-      linkAttributes.button.removeClass("mark-read");
-      linkAttributes.button.addClass("mark-unread");
-      linkAttributes.button.html("Mark as Unread");
-      linkAttributes.button.parents(".panel-body").removeClass("read-false");
-      linkAttributes.button.parents(".panel-body").addClass("read-true");
-    });
+    sendReadStatusUpdate(linkAttributes, "Mark as Unread", "false", "true")
   });
 
-  $(".all-links").on("click", ".mark-unread", function(){
+  $(".all-links").on("click", ".btn-read-true", function(){
     linkAttributes = getLinkAttributes($(this));
 
-    $.ajax({
-      url: '/links/' + linkAttributes.id,
-      method: "PATCH",
-      dataType: "JSON",
-      data: {link: {title: linkAttributes.title, url: linkAttributes.url, read: "false"}}
-    }).done( function(){
-      linkAttributes.button.removeClass("mark-unread");
-      linkAttributes.button.addClass("mark-read");
-      linkAttributes.button.html("Mark as Read");
-      linkAttributes.button.parents(".panel-body").removeClass("read-true");
-      linkAttributes.button.parents(".panel-body").addClass("read-false");
-    });
+    sendReadStatusUpdate(linkAttributes, "Mark as Read", "true", "false")
   });
 });
 
@@ -44,3 +22,18 @@ function getLinkAttributes(button) {
     "url": linkDiv.find(".url").html(),
   }
 };
+
+function sendReadStatusUpdate(linkAttributes, buttonText, statusWas, statusChangeTo) {
+  $.ajax({
+    url: '/links/' + linkAttributes.id,
+    method: "PATCH",
+    dataType: "JSON",
+    data: {link: {title: linkAttributes.title, url: linkAttributes.url, read: "true"}}
+  }).done( function() {
+    linkAttributes.button.removeClass('btn-read-' + statusWas);
+    linkAttributes.button.addClass('btn-read-' + statusChangeTo);
+    linkAttributes.button.html(buttonText);
+    linkAttributes.button.parents(".panel-body").removeClass('read-' + statusWas);
+    linkAttributes.button.parents(".panel-body").addClass('read-' + statusChangeTo);
+  });
+}

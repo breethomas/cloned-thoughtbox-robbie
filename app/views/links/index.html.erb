@@ -12,9 +12,9 @@
             <h4 class="url text-center"><%= link.url %></h4>
             <div class="text-center">
               <% if link.read %>
-                <button type="button" class="mark-unread btn btn-primary">Mark as Unread</button>
+                <button type="button" class="btn-read-<%= link.read %> btn btn-primary">Mark as Unread</button>
               <% else %>
-                <button type="button" class="mark-read btn btn-primary">Mark as Read</button>
+                <button type="button" class="btn-read-<%= link.read %> btn btn-primary">Mark as Read</button>
               <% end %>
               <%= link_to "Edit Link", edit_link_path(link), class: "btn btn-info" %>
             </div>
