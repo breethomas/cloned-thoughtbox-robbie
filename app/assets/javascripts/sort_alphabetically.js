@@ -1,12 +1,10 @@
 $(document).ready(function() {
   $('#sort-alphabetically').on('click', function () {
-    var $links = $('.link-container');
+    $(".all-links").html(alphabetize($('.link-container')));
+  });
 
-    if ($(this).is(':checked')) {
-      $(".all-links").html(alphabetize($links));
-    } else {
-      $(".all-links").html(sortByID($links));
-    }
+  $('#sort-by-id').on('click', function () {
+    $(".all-links").html(sortByID($('.link-container')));
   });
 });
 
