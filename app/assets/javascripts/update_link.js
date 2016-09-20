@@ -8,7 +8,8 @@ $(document).ready(function() {
     $(this).removeClass("mark-read");
     $(this).addClass("mark-unread");
     $(this).html("Mark as Unread");
-    $(this).parent().parent().css("background", "grey")
+    $(this).parents(".panel-body").removeClass("read-false");
+    $(this).parents(".panel-body").addClass("read-true");
 
     $.ajax({
       url: '/links/' + linkID,
@@ -27,7 +28,8 @@ $(document).ready(function() {
     $(this).removeClass("mark-unread");
     $(this).addClass("mark-read");
     $(this).html("Mark as Read");
-    $(this).parent().parent().css("background", "white")
+    $(this).parents(".panel-body").removeClass("read-true");
+    $(this).parents(".panel-body").addClass("read-false");
 
     $.ajax({
       url: '/links/' + linkID,
