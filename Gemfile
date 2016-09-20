@@ -37,6 +37,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'capybara'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'teaspoon'
+  gem 'teaspoon-mocha'
 end
 
 group :test do
